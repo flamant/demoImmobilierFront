@@ -1,0 +1,58 @@
+<mat-dialog-content  [formGroup]="dialogFormGroup">
+	<div class="column" *ngIf="login">
+		<div class="center column">
+			<h2 mat-dialog-title>Se connecter</h2>
+			<mat-label>E-mail</mat-label>
+			<input  type="email" placeholder="E-mail" formControlName="email">
+			<mat-error *ngIf="dialogFormGroup.get('email').hasError('required') && dialogFormGroup.controls['email']?.touched">L'email est obligatoire.</mat-error>
+			<mat-error *ngIf="dialogFormGroup.get('email').hasError('email') && dialogFormGroup.controls['email']?.touched">L'email n'est pas valide.</mat-error>
+		</div>
+		<br>
+		<br>
+		<div class="center column">
+			<mat-label>Mot de passe</mat-label>
+			<input  type="password" placeholder="Mot de passe" formControlName="password">
+			<mat-error *ngIf="dialogFormGroup.get('password').hasError('required') && dialogFormGroup.controls['password']?.touched">Le mot de passe est obligatoire.</mat-error>
+			<mat-error class="maxWidth250"  *ngIf="dialogFormGroup.get('password').hasError('pattern') && dialogFormGroup.controls['password']?.touched">Le mot de passe n'est pas valide : il doit contenir au moins 8 caractères, un caractère minuscule, un caractère majuscule, un chiffre et un caractère spécial.</mat-error>	
+		</div>
+	</div>
+	<div class="column center" *ngIf="!login">
+		<h2 mat-dialog-title>S'enregistrer</h2>
+		<mat-radio-group name="gender"  required formControlName="gender">
+			<mat-radio-button class="matRadio" labelPosition="after" checked="true" value="F">Mme</mat-radio-button>
+			<mat-radio-button labelPosition="after" value="M">Mr</mat-radio-button>
+		</mat-radio-group>
+		<mat-error *ngIf="dialogFormGroup.get('gender').hasError('required') && dialogFormGroup.controls['gender']?.dirty">Le sexe homme ou femme est obligatoire.</mat-error>
+	<!-- <mat-form-field> -->
+		<mat-label>Nom</mat-label>
+		<input type="text" placeholder="Nom" formControlName="lastName">
+		<mat-error *ngIf="dialogFormGroup.get('lastName').hasError('required') && dialogFormGroup.controls['lastName']?.touched">Le nom est obligatoire.</mat-error>
+	<!-- </mat-form-field> -->
+	<!-- <mat-form-field> -->
+		<mat-label>Prénom</mat-label>
+		<input  type="text" placeholder="Prénom" formControlName="firstName">
+		<mat-error *ngIf="dialogFormGroup.get('firstName').hasError('required') && dialogFormGroup.controls['firstName']?.touched">Le prénom est obligatoire.</mat-error>
+
+		<mat-label>E-mail</mat-label>
+		<input  type="email" placeholder="E-mail" formControlName="email">
+		<mat-error *ngIf="dialogFormGroup.get('email').hasError('required') && dialogFormGroup.controls['email']?.touched">L'email est obligatoire.</mat-error>
+		<mat-error *ngIf="dialogFormGroup.get('email').hasError('email') && dialogFormGroup.controls['email']?.touched">L'email n'est pas valide.</mat-error>
+		<mat-label>Mot de passe</mat-label>
+		<input  type="password" placeholder="Mot de passe" formControlName="password">
+		<mat-error *ngIf="dialogFormGroup.get('password').hasError('required') && dialogFormGroup.controls['password']?.touched">Le mot de passe est obligatoire.</mat-error>
+		<mat-error class="maxWidth250" *ngIf="dialogFormGroup.get('password').hasError('pattern') && dialogFormGroup.controls['password']?.touched">Le mot de passe n'est pas valide : il doit contenir au moins 8 caractères, un caractère minuscule, un caractère majuscule, un chiffre et un caractère spécial.</mat-error>
+
+		<mat-label>Confirmation du mot de passe</mat-label>
+		<input  type="password" placeholder="Confirmation du mot de passe" formControlName="confirmPassword">
+		<mat-error *ngIf="dialogFormGroup.get('confirmPassword').hasError('required') && dialogFormGroup.controls['confirmPassword']?.touched">La confirmation du mot de passe est obligatoire.</mat-error>
+		<mat-error class="maxWidth250" *ngIf="dialogFormGroup.get('confirmPassword').hasError('pattern') && dialogFormGroup.controls['confirmPassword']?.touched">La confirmation du mot de passe n'est pas valide : elle doit contenir au moins 8 caractères, un caractère minuscule, un caractère majuscule, un chiffre et un caractère spécial.</mat-error>		
+		<mat-error class="maxWidth250" *ngIf="dialogFormGroup.get('confirmPassword').hasError('NotEqual') && dialogFormGroup.controls['confirmPassword']?.touched">Le mot de passe et la confirmation du mot de passe doivent être les mêmes.</mat-error>
+	</div>
+	<div class="center">
+		<a href="javascript:" (click)="dialogFormGroup.reset();login=!login;">Vous n'avez pas de compte ? Créer un compte</a>
+	</div>	
+</mat-dialog-content>
+<mat-dialog-actions class="row">
+    <button class="mat-raised-button"(click)="close()">Fermer</button>
+    <button class="mat-raised-button custom-button" (click)="save()">{{ login ? 'Se loguer' : 'S\'enregistrer'}}</button>
+</mat-dialog-actions>

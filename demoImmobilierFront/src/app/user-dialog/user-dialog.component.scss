@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  margin:auto;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin:auto;
+    justify-content: center;
+  }
+
+.custom-button {
+  background-color: rgb(35, 48, 164);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: none;
+  background-size: auto auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+  color: #EBFF00; 
+}
+
+.matRadio {
+  margin-right: 10px !important;
+}
+
+input.ng-invalid.ng-touched {
+  border: solid 2px red;
+}
+
+input {
+  max-width: 220px;
+}
+
+.center {
+  text-align: center;
+}
+
+.maxWidth250 {
+  max-width: 250px;
+}

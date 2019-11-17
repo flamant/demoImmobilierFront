@@ -1,0 +1,160 @@
+<mat-toolbar color="primary">
+  <div style="width:100%;" class="md-toolbar-tools" >
+    Detail de l'annonce
+    <span flex></span>
+  </div>
+</mat-toolbar>
+<div fxLayout="row">
+  <div fxFlex="20%"></div>
+  <div fxFlex="60%">
+    <mat-card>
+        <mat-card-content>
+					<div fxLayout="row">
+					<div fxFlex="20%"></div>
+					<div fxFlex="60%" >
+						<ngb-carousel>
+								<ng-template *ngFor="let im of images; let i = index;" ngbSlide>
+									<div *ngIf="i<numberOfImages">
+										<div class="picsum-img-wrapper" fxLayoutAlign="center center">
+												<img src="./../assets/image/image1_{{i+1}}.jpg" alt="Random {{im.orderLo}} slide"  style="">
+										</div>
+										<div class="carousel-caption">
+												<h3>{{im.orderUp}} slide label</h3>
+												<p>{{im.comment}}</p>
+										</div>
+									</div>
+								</ng-template>	
+						</ngb-carousel>							
+					<!-- </div> -->
+					</div>
+					<div style="text-align:center" fxFlex="20%">
+						<div><b>Téléphone</b></div>
+						<div>{{annonce.produitImmobilierDTO?.telephone}}</div>
+					</div>
+					</div>
+					<hr color="blue" width="100%">
+          <div class="container">
+						<div>
+										<span>{{annonce.produitImmobilierDTO?.type}}</span>
+										<span style="float:right">{{annonce.produitImmobilierDTO?.prix | currency:'EUR':'symbol':'1.0-0':'fr'}}</span>
+						</div>
+						<div>
+										<span>{{annonce.produitImmobilierDTO?.nbr_piece}} p &#8226; {{annonce.produitImmobilierDTO?.nbr_chambre}} ch &#8226; {{annonce.produitImmobilierDTO?.surface}} m<sup>2</sup></span>
+										<span style="float:right">Construit le : {{annonce.produitImmobilierDTO?.dateConstruction | date:'dd MMMM yyyy':'+0100':'fr'}}</span>
+						</div>
+						<div>
+										<span>{{annonce.produitImmobilierDTO?.adresse}}, {{annonce.produitImmobilierDTO?.codePostal}} {{annonce.produitImmobilierDTO?.ville}}</span>
+										<span style="float:right">Mis en ligne le : {{annonce.produitImmobilierDTO?.dateMiseEnLigne | date:'dd MMMM yyyy':'+0100':'fr'}}</span>
+						</div>
+						<hr color="blue" width="100%">
+						<br>
+						<br>
+						<div>
+							<p>{{annonce.produitImmobilierDTO?.description}}</p>
+						</div>
+						<br>
+						<h4><b>Composition</b></h4>
+						<div>
+							<div fxFlex="33%">Etage : {{annonce.produitImmobilierDTO?.etage}}</div>
+							<div fxFlex="33%">Nombre de pièces : {{annonce.produitImmobilierDTO?.nbr_piece}}</div>
+							<div fxFlex="33%">Nombre de chambres : {{annonce.produitImmobilierDTO?.nbr_chambre}}</div>
+						</div>	
+						<div>Nombre de salle de bain : {{annonce.produitImmobilierDTO?.nbr_salle_bain}}</div>
+						<div>Nombre de salle de douche : {{annonce.produitImmobilierDTO?.nbr_salle_douche}}</div>
+						<div>Nombre de toilette séparées : {{annonce.produitImmobilierDTO?.nbr_toilette_separe}}</div>
+						<div>Nombre de toilette non séparées : {{annonce.produitImmobilierDTO?.nbr_toilette_non_separe}}</div>
+						<br>
+						<h4><b>Divers</b></h4>
+						<div>
+							<div fxFlex="33%">Parking : {{annonce.produitImmobilierDTO?.isParking ? 'oui': 'non'}}</div>
+							<div fxFlex="33%">Ascenseur : {{annonce.produitImmobilierDTO?.isLift ? 'oui': 'non'}}</div>
+							<div fxFlex="33%">Gardien : {{annonce.produitImmobilierDTO?.isGardien ? 'oui': 'non'}}</div>
+						</div>
+						<div>
+							<div fxFlex="33%">Cheminée : {{annonce.produitImmobilierDTO?.isCheminee ? 'oui': 'non'}}</div>
+							<div fxFlex="33%">Interphone : {{annonce.produitImmobilierDTO?.isInterphone ? 'oui': 'non'}}</div>
+							<div fxFlex="33%">Digicode : {{annonce.produitImmobilierDTO?.isDigicode ? 'oui': 'non'}}</div>
+						</div>						
+						<div>
+							<div fxFlex="33%">Nombre de lots : {{annonce.produitImmobilierDTO?.nbr_lots}}</div>
+							<div fxFlex="33%">Dpe : {{annonce.produitImmobilierDTO?.dpe}}</div>
+							<div *ngIf="annonce.produitImmobilierDTO.orientation" fxFlex="33%">Orientation : {{displayOrientation(annonce)}}</div>
+						</div>
+						<div>
+							<div fxFlex="33%">Zone : {{annonce.produitImmobilierDTO?.zone}}</div>
+						</div>
+						<br>			  
+						<h4><b>Surfaces</b></h4>
+						<div>
+							<div fxFlex="30%">Surface balcon : {{annonce.produitImmobilierDTO?.surfaceBalcon}} m<sup>2</sup></div>
+							<div fxFlex="30%">Surface terasse : {{annonce.produitImmobilierDTO?.surfaceTerrasse}} m<sup>2</sup></div>
+							<div fxFlex="30%">Surface veranda : {{annonce.produitImmobilierDTO?.surfaceVerandas}} m<sup>2</sup></div>
+						</div>             
+						<div>
+							<div fxFlex="30%">Surface sous sol : {{annonce.produitImmobilierDTO?.surfaceSousSol}} m<sup>2</sup></div>
+							<div fxFlex="30%">Surface cave : {{annonce.produitImmobilierDTO?.surfaceCave}} m<sup>2</sup></div>
+							<div fxFlex="30%">Surface logias : {{annonce.produitImmobilierDTO?.surfaceLogias}} m<sup>2</sup></div>
+						</div>
+						<div>
+							<div fxFlex="30%">Surface annexes : {{annonce.produitImmobilierDTO?.autreSurfaceAnnexe}} m<sup>2</sup></div>
+						</div>
+						<br>
+						<h4><b>Information financières</b></h4>
+						<div>
+							<div fxFlex="30%">Loyer maximum : {{annonce.resultatLoiPinelDTO?.loyerMaximum | currency:'EUR':'symbol':'1.0-0':'fr'}}</div>
+							<div fxFlex="30%">Charges copropriété : {{annonce.produitImmobilierDTO?.chargesCoprop | currency:'EUR':'symbol':'1.0-0':'fr'}}</div>
+							<div fxFlex="30%">Taxes foncières : {{annonce.produitImmobilierDTO?.taxeFonciaire | currency:'EUR':'symbol':'1.0-0':'fr'}}</div>
+						</div>						
+						<br>
+						<hr color="blue" width="100%">	
+						<h4><b>Réduction d'impôts</b></h4>
+						<br>
+						<table>
+							<tr>
+								<th>Réduction impôts sur 6 ans</th>
+								<th>Réduction impôts sur 9 ans</th>
+								<th>Réduction impôts sur 12 ans</th>
+							</tr>
+							<tr>
+								<td (click)="open1=true" align="center">{{annonce.resultatLoiPinelDTO.reductionImpots6ans}}%</td>
+								<td (click)="open2=true" align="center">{{annonce.resultatLoiPinelDTO.reductionImpots9ans}}%</td>
+								<td (click)="open3=true" align="center">{{annonce.resultatLoiPinelDTO.reductionImpots12ans}}%</td>
+							</tr>
+							<tr [style.visibility]="(open1 || open2 || open3)? 'visible': 'hidden'">
+								<td  [style.visibility]="open1? 'visible': 'hidden'" (click)="open1=false" align="center">
+									<div>Calcul 1 open1</div>
+									<div>Calcul 2 open1</div>
+									<div>Calcul 3 open1</div>
+									<div>Calcul 4 open1</div>
+									<div>Calcul 5 open1</div>
+									<div>Calcul 6 open1</div>
+								</td>
+								<td [style.visibility]="open2? 'visible': 'hidden'" (click)="open2=false" align="center">
+									<div>Calcul 1 open2</div>
+									<div>Calcul 2 open2</div>
+									<div>Calcul 3 open2</div>
+									<div>Calcul 4 open2</div>
+									<div>Calcul 5 open2</div>
+									<div>Calcul 6 open2</div>
+								</td>
+								<td [style.visibility]="open3? 'visible': 'hidden'" (click)="open3=false" align="center">
+									<div>Calcul 1 open3</div>
+									<div>Calcul 2 open3</div>
+									<div>Calcul 3 open3</div>
+									<div>Calcul 4 open3</div>
+									<div>Calcul 5 open3</div>
+									<div>Calcul 6 open3</div>
+								</td>
+							</tr>							
+						</table>
+						<br>
+						<br>
+						<nav fxLayout fxLayoutAlign="center center">
+							<a routerLink="/listproduitimmobilier" routerLinkActive="active">Retour à la liste des Produits Immobiliers</a>
+						</nav>								  
+          </div>
+        </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="20%"></div>
+</div>

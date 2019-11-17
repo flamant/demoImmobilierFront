@@ -1,0 +1,85 @@
+<mat-toolbar color="primary" class="menu-bar mat-elevation-z1">
+  <div style="width:100%;" class="md-toolbar-tools" >
+    Liste des annonces
+    <span flex></span>
+  </div>
+  <span *ngFor="let item of navItems">
+    <!-- Handle branch node buttons here -->
+    <span *ngIf="item.children && item.children.length > 0">
+      <button id="item.id" mat-raised-button color="accent" [matMenuTriggerFor]="menu.childMenu"
+        [disabled]="item.disabled">
+        <mat-icon>{{item.iconName}}</mat-icon>
+        <span>{{item.displayName}}</span>
+          <!-- {{item.displayName}} -->
+      </button>
+      <app-menu-item #menu [items]="item.children"></app-menu-item>
+    </span>
+    <!-- Leaf node buttons here -->
+    <span *ngIf="!item.children || item.children.length === 0">
+      <span *ngIf="!item.openDialog">
+        <button id="item.id" mat-button mat-raised-button color="accent" [routerLink]="item.route">
+          <mat-icon>{{item.iconName}}</mat-icon>
+          <span>{{item.displayName}}</span>        
+        </button>
+      </span>
+      <span *ngIf="item.openDialog">
+        <button id="item.id" mat-button mat-raised-button color="accent" (click)="openDialog($event);">
+          <mat-icon>{{item.iconName}}</mat-icon>
+          <span>{{item.displayName}}</span>        
+        </button>
+      </span>      
+    </span>
+  </span>
+</mat-toolbar>
+<div fxLayout="row">
+  <div fxFlex="20%"></div>
+  <div fxFlex="60%">
+    <div class="col-12 justify-content-center">
+      <ngb-pagination  [(page)]="page" [maxSize]="10" [rotate]="true" [pageSize]="pageSize" [collectionSize]="collectionSize" [boundaryLinks]="true" (pageChange)="loadPage($event)">
+        <ng-template ngbPaginationFirst>&laquo;</ng-template>
+        <ng-template ngbPaginationLast>&raquo;</ng-template>
+        <ng-template ngbPaginationPrevious>&lsaquo;</ng-template>
+        <ng-template ngbPaginationNext>&rsaquo;</ng-template>
+        <ng-template ngbPaginationEllipsis>...</ng-template>
+        <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+      </ngb-pagination>
+    </div>
+    <mat-card *ngFor="let annonce of annonces; let i = index" (click)="goToDetailsView(annonce)" class="pointer">
+        <mat-card-content >
+          <div class="container" fxLayout="row" >
+            <div fxFlex="40%">
+              <img src="./../assets/image/image{{i+1}}.jpg" alt="Avatar" style="position:absolute;top:0px;left:0px;width:40%;height:100%">
+            </div>
+            <div fxFlex="60%">
+                <!-- <div style="text-align:center">{{annonce?.dateConstruction | date:'dd MMMM yyyy'}}</div> -->
+                <div>Construit le : {{annonce?.dateConstruction | date:'dd MMMM yyyy':'+0100':'fr'}}</div>
+                <div>Mis en ligne le : {{annonce?.dateMiseEnLigne | date:'dd MMMM yyyy':'+0100':'fr'}}</div>
+                <br>                
+                <div>
+                  <span>{{annonce?.type}}</span>
+                  <span style="float:right">{{annonce?.prix | currency:'EUR':'symbol':'1.0-0':'fr'}}</span>
+                </div>
+                <div>{{annonce?.nbr_piece}} p &#8226; {{annonce?.nbr_chambre}} ch &#8226; {{annonce?.surface}} m<sup>2</sup></div>
+                <br>
+                <div>{{annonce?.adresse}}, {{annonce?.codePostal}} {{annonce?.ville}}</div>
+                <div>
+                  <p>{{generateSpaceString(annonce)}}</p>
+                </div>
+            </div>
+          </div>
+        </mat-card-content>
+    </mat-card>
+    <div class="col-12 justify-content-center">
+      <ngb-pagination [(page)]="page" [maxSize]="10" [rotate]="true" [pageSize]="pageSize" [collectionSize]="collectionSize" [boundaryLinks]="true" (pageChange)="loadPage($event)">
+        <ng-template ngbPaginationFirst>First</ng-template>
+        <ng-template ngbPaginationLast>Last</ng-template>
+        <ng-template ngbPaginationPrevious>Prev</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+        <ng-template ngbPaginationEllipsis>...</ng-template>
+        <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+      </ngb-pagination>
+    </div>    
+  </div>
+  <div fxFlex="20%"></div>
+</div>
+
