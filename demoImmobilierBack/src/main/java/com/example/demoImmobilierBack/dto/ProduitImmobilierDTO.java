@@ -22,9 +22,25 @@ public class ProduitImmobilierDTO {
 
     private String description;   
 
-    private Integer nbr_lots;
+    private Integer nbrLots;
 
     private Byte isParking;
+    
+    private Byte isBox;
+    
+    private Byte isCave;
+    
+    private Byte isBalcon;
+    
+    private Byte isTerasse;
+    
+    private Byte isLoggia;
+    
+    private Byte isSurfaceAnnexe;
+    
+    private Byte isDuplex;
+    
+    private Byte isTriplex;
 
     private Byte isLift;
 
@@ -41,18 +57,20 @@ public class ProduitImmobilierDTO {
     private String dpe;
 
     private Integer etage; 
+    
+    private Integer nbrEtage;
 
-    private Integer nbr_piece;
+    private Integer nbrPiece;
 
-    private Integer nbr_chambre;
+    private Integer nbrChambre;
 
-    private Integer nbr_salle_bain;
+    private Integer nbrSalleDeBain;
 
-    private Integer nbr_salle_douche;
+    private Integer nbrSalleDeDouche;
 
-    private Integer nbr_toilette_separe;
+    private Integer nbrToiletteSepare;
 
-    private Integer nbr_toilette_non_separe;
+    private Integer nbrToiletteNonSepare;
 
     private Double chargesCoprop;
 
@@ -72,7 +90,9 @@ public class ProduitImmobilierDTO {
 
     private Double prix;
 
-    private Double surface;
+    private Double surfaceHabitable;
+    
+    private Double surfaceLoiQuarez;
 
     private Double surfaceBalcon;
 
@@ -80,13 +100,17 @@ public class ProduitImmobilierDTO {
 
     private Double surfaceVerandas;
 
-    private Double surfaceSousSol;
 
     private Double surfaceCave;
 
-    private Double surfaceLogias;
+    private Double surfaceLoggia;
 
     private Double autreSurfaceAnnexe;
+    
+    private Double loyerMaximum;
+    
+    private String venteLocation;
+    
     
     private int collectionSize;
 
@@ -122,61 +146,60 @@ public class ProduitImmobilierDTO {
 		this.description = description;
 	}
 
-	public Integer getNbr_lots() {
-		return nbr_lots;
+	public Integer getNbrLots() {
+		return nbrLots;
 	}
 
-	public void setNbr_lots(Integer nbr_lots) {
-		this.nbr_lots = nbr_lots;
+	public void setNbrLots(Integer nbrLots) {
+		this.nbrLots = nbrLots;
 	}
 
 	public Byte getIsParking() {
 		return isParking;
 	}
 
-	@JsonIgnore
-	public void setIsParking(Boolean isParking) {
-		this.isParking = (isParking == null) ? new Byte((byte)0) : new Byte(isParking?(byte)1:(byte)0);
+	public void setIsParking(Byte isParking) {
+		this.isParking = isParking;
 	}
 
 	public Byte getIsLift() {
 		return isLift;
 	}
-	@JsonIgnore
-	public void setIsLift(Boolean isLift) {
-		this.isLift = (isLift == null) ? new Byte((byte)0) : new Byte(isLift?(byte)1:(byte)0);
+
+	public void setIsLift(Byte isLift) {
+		this.isLift = isLift;
 	}
 
 	public Byte getIsGardien() {
 		return isGardien;
 	}
-	@JsonIgnore
-	public void setIsGardien(Boolean isGardien) {
-		this.isGardien = (isGardien == null) ? new Byte((byte)0) : new Byte(isGardien?(byte)1:(byte)0);
+
+	public void setIsGardien(Byte isGardien) {
+		this.isGardien = isGardien;
 	}
 
 	public Byte getIsCheminee() {
 		return isCheminee;
 	}
-	@JsonIgnore
-	public void setIsCheminee(Boolean isCheminee) {
-		this.isCheminee = (isCheminee == null) ? new Byte((byte)0) : new Byte(isCheminee?(byte)1:(byte)0);
+
+	public void setIsCheminee(Byte isCheminee) {
+		this.isCheminee = isCheminee;
 	}
 
 	public Byte getIsInterphone() {
 		return isInterphone;
 	}
-	@JsonIgnore
-	public void setIsInterphone(Boolean isInterphone) {
-		this.isInterphone = (isInterphone == null) ? new Byte((byte)0) : new Byte(isInterphone?(byte)1:(byte)0);
+
+	public void setIsInterphone(Byte isInterphone) {
+		this.isInterphone = isInterphone;
 	}
 
 	public Byte getIsDigicode() {
 		return isDigicode;
 	}
-	@JsonIgnore
-	public void setIsDigicode(Boolean isDigicode) {
-		this.isDigicode = (isDigicode == null) ? new Byte((byte)0) : new Byte(isDigicode?(byte)1:(byte)0);
+
+	public void setIsDigicode(Byte isDigicode) {
+		this.isDigicode = isDigicode;
 	}
 
 	public String getOrientation() {
@@ -203,52 +226,52 @@ public class ProduitImmobilierDTO {
 		this.etage = etage;
 	}
 
-	public Integer getNbr_piece() {
-		return nbr_piece;
+	public Integer getNbrPiece() {
+		return nbrPiece;
 	}
 
-	public void setNbr_piece(Integer nbr_piece) {
-		this.nbr_piece = nbr_piece;
+	public void setNbrPiece(Integer nbrPiece) {
+		this.nbrPiece = nbrPiece;
 	}
 
-	public Integer getNbr_chambre() {
-		return nbr_chambre;
+	public Integer getNbrChambre() {
+		return nbrChambre;
 	}
 
-	public void setNbr_chambre(Integer nbr_chambre) {
-		this.nbr_chambre = nbr_chambre;
+	public void setNbrChambre(Integer nbrChambre) {
+		this.nbrChambre = nbrChambre;
 	}
 
-	public Integer getNbr_salle_bain() {
-		return nbr_salle_bain;
+	public Integer getNbrSalleDeBain() {
+		return nbrSalleDeBain;
 	}
 
-	public void setNbr_salle_bain(Integer nbr_salle_bain) {
-		this.nbr_salle_bain = nbr_salle_bain;
+	public void setNbrSalleDeBain(Integer nbrSalleDeBain) {
+		this.nbrSalleDeBain = nbrSalleDeBain;
 	}
 
-	public Integer getNbr_salle_douche() {
-		return nbr_salle_douche;
+	public Integer getNbrSalleDeDouche() {
+		return nbrSalleDeDouche;
 	}
 
-	public void setNbr_salle_douche(Integer nbr_salle_douche) {
-		this.nbr_salle_douche = nbr_salle_douche;
+	public void setNbrSalleDeDouche(Integer nbrSalleDeDouche) {
+		this.nbrSalleDeDouche = nbrSalleDeDouche;
 	}
 
-	public Integer getNbr_toilette_separe() {
-		return nbr_toilette_separe;
+	public Integer getNbrToiletteSepare() {
+		return nbrToiletteSepare;
 	}
 
-	public void setNbr_toilette_separe(Integer nbr_toilette_separe) {
-		this.nbr_toilette_separe = nbr_toilette_separe;
+	public void setNbrToiletteSepare(Integer nbrToiletteSepare) {
+		this.nbrToiletteSepare = nbrToiletteSepare;
 	}
 
-	public Integer getNbr_toilette_non_separe() {
-		return nbr_toilette_non_separe;
+	public Integer getNbrToiletteNonSepare() {
+		return nbrToiletteNonSepare;
 	}
 
-	public void setNbr_toilette_non_separe(Integer nbr_toilette_non_separe) {
-		this.nbr_toilette_non_separe = nbr_toilette_non_separe;
+	public void setNbrToiletteNonSepare(Integer nbrToiletteNonSepare) {
+		this.nbrToiletteNonSepare = nbrToiletteNonSepare;
 	}
 
 	public Double getChargesCoprop() {
@@ -307,20 +330,20 @@ public class ProduitImmobilierDTO {
 		this.ville = ville;
 	}
 
+	public String getZone() {
+		return zone;
+	}
+
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+
 	public Double getPrix() {
 		return prix;
 	}
 
 	public void setPrix(Double prix) {
 		this.prix = prix;
-	}
-
-	public Double getSurface() {
-		return surface;
-	}
-
-	public void setSurface(Double surface) {
-		this.surface = surface;
 	}
 
 	public Double getSurfaceBalcon() {
@@ -347,28 +370,12 @@ public class ProduitImmobilierDTO {
 		this.surfaceVerandas = surfaceVerandas;
 	}
 
-	public Double getSurfaceSousSol() {
-		return surfaceSousSol;
-	}
-
-	public void setSurfaceSousSol(Double surfaceSousSol) {
-		this.surfaceSousSol = surfaceSousSol;
-	}
-
 	public Double getSurfaceCave() {
 		return surfaceCave;
 	}
 
 	public void setSurfaceCave(Double surfaceCave) {
 		this.surfaceCave = surfaceCave;
-	}
-
-	public Double getSurfaceLogias() {
-		return surfaceLogias;
-	}
-
-	public void setSurfaceLogias(Double surfaceLogias) {
-		this.surfaceLogias = surfaceLogias;
 	}
 
 	public Double getAutreSurfaceAnnexe() {
@@ -379,36 +386,12 @@ public class ProduitImmobilierDTO {
 		this.autreSurfaceAnnexe = autreSurfaceAnnexe;
 	}
 
-	public String getZone() {
-		return zone;
+	public Double getLoyerMaximum() {
+		return loyerMaximum;
 	}
 
-	public void setZone(String zone) {
-		this.zone = zone;
-	}
-
-	public void setIsParking(Byte isParking) {
-		this.isParking = isParking;
-	}
-
-	public void setIsLift(Byte isLift) {
-		this.isLift = isLift;
-	}
-
-	public void setIsGardien(Byte isGardien) {
-		this.isGardien = isGardien;
-	}
-
-	public void setIsCheminee(Byte isCheminee) {
-		this.isCheminee = isCheminee;
-	}
-
-	public void setIsInterphone(Byte isInterphone) {
-		this.isInterphone = isInterphone;
-	}
-
-	public void setIsDigicode(Byte isDigicode) {
-		this.isDigicode = isDigicode;
+	public void setLoyerMaximum(Double loyerMaximum) {
+		this.loyerMaximum = loyerMaximum;
 	}
 
 	public int getCollectionSize() {
@@ -418,6 +401,112 @@ public class ProduitImmobilierDTO {
 	public void setCollectionSize(int collectionSize) {
 		this.collectionSize = collectionSize;
 	}
+
+	public Byte getIsBox() {
+		return isBox;
+	}
+
+	public void setIsBox(Byte isBox) {
+		this.isBox = isBox;
+	}
+
+	public Byte getIsCave() {
+		return isCave;
+	}
+
+	public void setIsCave(Byte isCave) {
+		this.isCave = isCave;
+	}
+
+	public Byte getIsBalcon() {
+		return isBalcon;
+	}
+
+	public void setIsBalcon(Byte isBalcon) {
+		this.isBalcon = isBalcon;
+	}
+
+	public Byte getIsTerasse() {
+		return isTerasse;
+	}
+
+	public void setIsTerasse(Byte isTerasse) {
+		this.isTerasse = isTerasse;
+	}
+
+	public Byte getIsLoggia() {
+		return isLoggia;
+	}
+
+	public void setIsLoggia(Byte isLoggia) {
+		this.isLoggia = isLoggia;
+	}
+
+	public Byte getIsSurfaceAnnexe() {
+		return isSurfaceAnnexe;
+	}
+
+	public void setIsSurfaceAnnexe(Byte isSurfaceAnnexe) {
+		this.isSurfaceAnnexe = isSurfaceAnnexe;
+	}
+
+	public Byte getIsDuplex() {
+		return isDuplex;
+	}
+
+	public void setIsDuplex(Byte isDuplex) {
+		this.isDuplex = isDuplex;
+	}
+
+	public Byte getIsTriplex() {
+		return isTriplex;
+	}
+
+	public void setIsTriplex(Byte isTriplex) {
+		this.isTriplex = isTriplex;
+	}
+
+	public Integer getNbrEtage() {
+		return nbrEtage;
+	}
+
+	public void setNbrEtage(Integer nbrEtage) {
+		this.nbrEtage = nbrEtage;
+	}
+
+	public Double getSurfaceHabitable() {
+		return surfaceHabitable;
+	}
+
+	public void setSurfaceHabitable(Double surfaceHabitable) {
+		this.surfaceHabitable = surfaceHabitable;
+	}
+
+	public Double getSurfaceLoiQuarez() {
+		return surfaceLoiQuarez;
+	}
+
+	public void setSurfaceLoiQuarez(Double surfaceLoiQuarez) {
+		this.surfaceLoiQuarez = surfaceLoiQuarez;
+	}
+
+	public Double getSurfaceLoggia() {
+		return surfaceLoggia;
+	}
+
+	public void setSurfaceLoggia(Double surfaceLoggia) {
+		this.surfaceLoggia = surfaceLoggia;
+	}
+
+	public String getVenteLocation() {
+		return venteLocation;
+	}
+
+	public void setVenteLocation(String venteLocation) {
+		this.venteLocation = venteLocation;
+	}
+
+
 	
 	
 	

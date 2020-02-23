@@ -1,6 +1,6 @@
 package com.example.demoImmobilierBack.controller;
 
-/*import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,23 +35,20 @@ public class UserController {
         return userDTOWithMesssage;
     }
     
-    @RequestMapping(value = "/save",
-    method = RequestMethod.POST,
-    produces = {"text/plain;charset=UTF-8", MediaType.APPLICATION_JSON_VALUE},
-    consumes = {"text/plain;charset=UTF-8", MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody UserDTOWithMesssage save(@RequestBody UserDTO userDTO){
-    	UserDTOWithMesssage userDTOWithMesssage = new UserDTOWithMesssage();
+    @RequestMapping(value = "/createUser",
+    method = RequestMethod.POST
+//    produces = {"text/plain;charset=UTF-8", MediaType.APPLICATION_JSON_VALUE},
+//    consumes = {"text/plain;charset=UTF-8", MediaType.APPLICATION_JSON_VALUE}
+    )
+    public @ResponseBody UserDTO save(@RequestBody UserDTO userDTO){
+    	UserDTO userDTOWithMesssage = new UserDTO();
     	String message = userService.checkEmailAndPasswordAndPasswordConfirm(userDTO);
-    	if (message.isEmpty()) {
-    		UserDTO userDTOSaved = userService.save(userDTO);
-    		userDTOWithMesssage.setUserDTO(userDTOSaved);
-    		userDTOWithMesssage.setMessage(message);
-    	} else {
-    		userDTOWithMesssage.setUserDTO(userDTO);
-    		userDTOWithMesssage.setMessage("");    		
+    	if (message != null && message.length() == 0) {
+    		userDTOWithMesssage = userService.save(userDTO);
     	}
+    	userDTOWithMesssage.setMessage(message);
     	return userDTOWithMesssage;
     }
 
 
-}*/
+}

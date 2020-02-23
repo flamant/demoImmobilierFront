@@ -11,6 +11,7 @@ import org.hibernate.annotations.Type;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -48,12 +49,60 @@ public class ProduitImmobilier {
      * the number of lots.
      */
     @Column(name = "NOMBRE_LOTS")
-    private Integer nbr_lots;
+    private Integer nbrLots;
     /**
      * does it contain a parking.
      */
     @Column(name = "PARKING", columnDefinition="BIT", nullable = false)
     private Boolean isParking;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "BOX", columnDefinition="BIT", nullable = false)
+    private Boolean isBox;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "CAVE", columnDefinition="BIT", nullable = false)
+    private Boolean isCave;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "BALCON", columnDefinition="BIT", nullable = false)
+    private Boolean isBalcon;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "TERASSE", columnDefinition="BIT", nullable = false)
+    private Boolean isTerasse;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "LOGGIA", columnDefinition="BIT", nullable = false)
+    private Boolean isLoggia;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "SURFACE_ANNEXE", columnDefinition="BIT", nullable = false)
+    private Boolean isSurfaceAnnexe;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "DUPLEX", columnDefinition="BIT", nullable = false)
+    private Boolean isDuplex;
+    
+    /**
+     * does it contain a parking.
+     */
+    @Column(name = "TRIPLEX", columnDefinition="BIT", nullable = false)
+    private Boolean isTriplex;
     /**
      * does it contain a lift.
      */
@@ -93,37 +142,43 @@ public class ProduitImmobilier {
      * the etage.
      */
     @Column(name = "ETAGE")
-    private Integer etage; 
+    private Integer etage;
+    
+    /**
+     * the etage.
+     */
+    @Column(name = "NOMBRE_ETAGE")
+    private Integer nbrEtage;
     /**
      * the nbr_piece.
      */
     @Column(name = "NOMBRE_PIECE")
-    private Integer nbr_piece;
+    private Integer nbrPiece;
     /**
      * the nbr_chambre.
      */
     @Column(name = "NOMBRE_CHAMBRE")
-    private Integer nbr_chambre;
+    private Integer nbrChambre;
     /**
      * the nbr_salle_bain.
      */
     @Column(name = "SALLE_BAIN")
-    private Integer nbr_salle_bain;
+    private Integer nbrSalleDeBain;
     /**
      * the nbr_salle_douche.
      */
     @Column(name = "SALLE_DOUCHE")
-    private Integer nbr_salle_douche;
+    private Integer nbrSalleDeDouche;
     /**
      * the nbr_toilette_separe.
      */
     @Column(name = "TOILETTE_SEPARE")
-    private Integer nbr_toilette_separe;
+    private Integer nbrToiletteSepare;
     /**
      * the nbr_toilette_non_separe.
      */
     @Column(name = "TOILETTE_NON_SEPARE")
-    private Integer nbr_toilette_non_separe;
+    private Integer nbrToiletteNonSepare;
     /**
      * charges copropriété.
      */
@@ -170,8 +225,11 @@ public class ProduitImmobilier {
     @Column(name = "PRIX")
     private Double prix;
 
-    @Column(name = "SURFACE")
-    private Double surface;
+    @Column(name = "SURFACE_HABITABLE")
+    private Double surfaceHabitable;
+    
+    @Column(name = "SURFACE_LOI_QUAREZ")
+    private Double surfaceLoiQuarez;
 
     @Column(name = "SURFACE_BALCON")
     private Double surfaceBalcon;
@@ -182,14 +240,11 @@ public class ProduitImmobilier {
     @Column(name = "SURFACE_VERANDAS")
     private Double surfaceVerandas;
 
-    @Column(name = "SURFACE_SOUS_SOL")
-    private Double surfaceSousSol;
-
     @Column(name = "SURFACE_CAVE")
     private Double surfaceCave;
 
-    @Column(name = "SURFACE_LOGIAS")
-    private Double surfaceLogias;
+    @Column(name = "SURFACE_LOGGIA")
+    private Double surfaceLoggia;
 
     @Column(name = "AUTRE_SURFACE_ANNEXE")
     private Double autreSurfaceAnnexe;
@@ -200,17 +255,17 @@ public class ProduitImmobilier {
     @Column(name = "LOYERMAXIMUM")
     private Double loyerMaximum;
     
-    @Column(name = "REDUCTIONIMPOTS6ANS")
-    private Double reductionImpots6ans;
+    @Column(name = "SALE_RENT")
+    private String venteLocation;
     
-    @Column(name = "REDUCTIONIMPOTS9ANS")
-    private Double reductionImpots9ans;
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "produitImmobilier")
+    private List<DBFile> files;
     
-    @Column(name = "REDUCTIONIMPOTS12ANS")
-    private Double reductionImpots12ans;
     
     @ManyToMany(mappedBy = "realEstateProperty")
     private Set<User> users = new HashSet<>();
+
+
 
 	public Long getId() {
 		return id;
@@ -244,12 +299,12 @@ public class ProduitImmobilier {
 		this.description = description;
 	}
 
-	public Integer getNbr_lots() {
-		return nbr_lots;
+	public Integer getNbrLots() {
+		return nbrLots;
 	}
 
-	public void setNbr_lots(Integer nbr_lots) {
-		this.nbr_lots = nbr_lots;
+	public void setNbrLots(Integer nbrLots) {
+		this.nbrLots = nbrLots;
 	}
 
 	public Boolean getIsParking() {
@@ -324,52 +379,52 @@ public class ProduitImmobilier {
 		this.etage = etage;
 	}
 
-	public Integer getNbr_piece() {
-		return nbr_piece;
+	public Integer getNbrPiece() {
+		return nbrPiece;
 	}
 
-	public void setNbr_piece(Integer nbr_piece) {
-		this.nbr_piece = nbr_piece;
+	public void setNbrPiece(Integer nbrPiece) {
+		this.nbrPiece = nbrPiece;
 	}
 
-	public Integer getNbr_chambre() {
-		return nbr_chambre;
+	public Integer getNbrChambre() {
+		return nbrChambre;
 	}
 
-	public void setNbr_chambre(Integer nbr_chambre) {
-		this.nbr_chambre = nbr_chambre;
+	public void setNbrChambre(Integer nbrChambre) {
+		this.nbrChambre = nbrChambre;
 	}
 
-	public Integer getNbr_salle_bain() {
-		return nbr_salle_bain;
+	public Integer getNbrSalleDeBain() {
+		return nbrSalleDeBain;
 	}
 
-	public void setNbr_salle_bain(Integer nbr_salle_bain) {
-		this.nbr_salle_bain = nbr_salle_bain;
+	public void setNbrSalleDeBain(Integer nbrSalleDeBain) {
+		this.nbrSalleDeBain = nbrSalleDeBain;
 	}
 
-	public Integer getNbr_salle_douche() {
-		return nbr_salle_douche;
+	public Integer getNbrSalleDeDouche() {
+		return nbrSalleDeDouche;
 	}
 
-	public void setNbr_salle_douche(Integer nbr_salle_douche) {
-		this.nbr_salle_douche = nbr_salle_douche;
+	public void setNbrSalleDeDouche(Integer nbrSalleDeDouche) {
+		this.nbrSalleDeDouche = nbrSalleDeDouche;
 	}
 
-	public Integer getNbr_toilette_separe() {
-		return nbr_toilette_separe;
+	public Integer getNbrToiletteSepare() {
+		return nbrToiletteSepare;
 	}
 
-	public void setNbr_toilette_separe(Integer nbr_toilette_separe) {
-		this.nbr_toilette_separe = nbr_toilette_separe;
+	public void setNbrToiletteSepare(Integer nbrToiletteSepare) {
+		this.nbrToiletteSepare = nbrToiletteSepare;
 	}
 
-	public Integer getNbr_toilette_non_separe() {
-		return nbr_toilette_non_separe;
+	public Integer getNbrToiletteNonSepare() {
+		return nbrToiletteNonSepare;
 	}
 
-	public void setNbr_toilette_non_separe(Integer nbr_toilette_non_separe) {
-		this.nbr_toilette_non_separe = nbr_toilette_non_separe;
+	public void setNbrToiletteNonSepare(Integer nbrToiletteNonSepare) {
+		this.nbrToiletteNonSepare = nbrToiletteNonSepare;
 	}
 
 	public Double getChargesCoprop() {
@@ -428,20 +483,20 @@ public class ProduitImmobilier {
 		this.ville = ville;
 	}
 
+	public String getZone() {
+		return zone;
+	}
+
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+
 	public Double getPrix() {
 		return prix;
 	}
 
 	public void setPrix(Double prix) {
 		this.prix = prix;
-	}
-
-	public Double getSurface() {
-		return surface;
-	}
-
-	public void setSurface(Double surface) {
-		this.surface = surface;
 	}
 
 	public Double getSurfaceBalcon() {
@@ -468,13 +523,6 @@ public class ProduitImmobilier {
 		this.surfaceVerandas = surfaceVerandas;
 	}
 
-	public Double getSurfaceSousSol() {
-		return surfaceSousSol;
-	}
-
-	public void setSurfaceSousSol(Double surfaceSousSol) {
-		this.surfaceSousSol = surfaceSousSol;
-	}
 
 	public Double getSurfaceCave() {
 		return surfaceCave;
@@ -482,14 +530,6 @@ public class ProduitImmobilier {
 
 	public void setSurfaceCave(Double surfaceCave) {
 		this.surfaceCave = surfaceCave;
-	}
-
-	public Double getSurfaceLogias() {
-		return surfaceLogias;
-	}
-
-	public void setSurfaceLogias(Double surfaceLogias) {
-		this.surfaceLogias = surfaceLogias;
 	}
 
 	public Double getAutreSurfaceAnnexe() {
@@ -508,38 +548,6 @@ public class ProduitImmobilier {
 		this.loyerMaximum = loyerMaximum;
 	}
 
-	public Double getReductionImpots6ans() {
-		return reductionImpots6ans;
-	}
-
-	public void setReductionImpots6ans(Double reductionImpots6ans) {
-		this.reductionImpots6ans = reductionImpots6ans;
-	}
-
-	public Double getReductionImpots9ans() {
-		return reductionImpots9ans;
-	}
-
-	public void setReductionImpots9ans(Double reductionImpots9ans) {
-		this.reductionImpots9ans = reductionImpots9ans;
-	}
-
-	public Double getReductionImpots12ans() {
-		return reductionImpots12ans;
-	}
-
-	public void setReductionImpots12ans(Double reductionImpots12ans) {
-		this.reductionImpots12ans = reductionImpots12ans;
-	}
-
-	public String getZone() {
-		return zone;
-	}
-
-	public void setZone(String zone) {
-		this.zone = zone;
-	}
-
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -548,5 +556,112 @@ public class ProduitImmobilier {
 		this.users = users;
 	}
 
+	public Boolean getIsBox() {
+		return isBox;
+	}
+
+	public void setIsBox(Boolean isBox) {
+		this.isBox = isBox;
+	}
+
+	public Boolean getIsCave() {
+		return isCave;
+	}
+
+	public void setIsCave(Boolean isCave) {
+		this.isCave = isCave;
+	}
+
+	public Boolean getIsBalcon() {
+		return isBalcon;
+	}
+
+	public void setIsBalcon(Boolean isBalcon) {
+		this.isBalcon = isBalcon;
+	}
+
+	public Boolean getIsTerasse() {
+		return isTerasse;
+	}
+
+	public void setIsTerasse(Boolean isTerasse) {
+		this.isTerasse = isTerasse;
+	}
+
+	public Boolean getIsLoggia() {
+		return isLoggia;
+	}
+
+	public void setIsLoggia(Boolean isLoggia) {
+		this.isLoggia = isLoggia;
+	}
+
+	public Boolean getIsSurfaceAnnexe() {
+		return isSurfaceAnnexe;
+	}
+
+	public void setIsSurfaceAnnexe(Boolean isSurfaceAnnexe) {
+		this.isSurfaceAnnexe = isSurfaceAnnexe;
+	}
+
+	public Boolean getIsDuplex() {
+		return isDuplex;
+	}
+
+	public void setIsDuplex(Boolean isDuplex) {
+		this.isDuplex = isDuplex;
+	}
+
+	public Boolean getIsTriplex() {
+		return isTriplex;
+	}
+
+	public void setIsTriplex(Boolean isTriplex) {
+		this.isTriplex = isTriplex;
+	}
+
+	public Integer getNbrEtage() {
+		return nbrEtage;
+	}
+
+	public void setNbrEtage(Integer nbrEtage) {
+		this.nbrEtage = nbrEtage;
+	}
+
+	public Double getSurfaceHabitable() {
+		return surfaceHabitable;
+	}
+
+	public void setSurfaceHabitable(Double surfaceHabitable) {
+		this.surfaceHabitable = surfaceHabitable;
+	}
+
+	public Double getSurfaceLoiQuarez() {
+		return surfaceLoiQuarez;
+	}
+
+	public void setSurfaceLoiQuarez(Double surfaceLoiQuarez) {
+		this.surfaceLoiQuarez = surfaceLoiQuarez;
+	}
+
+	public Double getSurfaceLoggia() {
+		return surfaceLoggia;
+	}
+
+	public void setSurfaceLoggia(Double surfaceLoggia) {
+		this.surfaceLoggia = surfaceLoggia;
+	}
+
+	public String getVenteLocation() {
+		return venteLocation;
+	}
+
+	public void setVenteLocation(String venteLocation) {
+		this.venteLocation = venteLocation;
+	}
+	
+	
+
+	
     
 }

@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 
 import com.example.demoImmobilierBack.dto.ProduitImmobilierDTO;
 import com.example.demoImmobilierBack.dto.UserDTO;
@@ -20,6 +21,7 @@ import com.example.demoImmobilierBack.model.User;
 import com.example.demoImmobilierBack.repository.ProduitImmobilierRepository;
 import com.example.demoImmobilierBack.repository.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService{
 	
 	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
@@ -103,7 +105,7 @@ public class UserServiceImpl implements UserService{
 		userDTO.setOwnedOrRentedAccommodation(user.getOwnedOrRentedAccommodation());
 		userDTO.setMonthlyNetSalary(user.getMonthlyNetSalary());
 		userDTO.setRentAmount(user.getRentAmount());
-		userDTO.setIsBankLoan(user.getIsBankLoan());
+		userDTO.setBankLoan(user.getIsBankLoan() ? new Byte((byte)1) : new Byte((byte)0));
 		userDTO.setCapitalContribution(user.getCapitalContribution());
 		userDTO.setCreditAmount(user.getCreditAmount());
 		userDTO.setMonthlyPayment(user.getMonthlyPayment());
@@ -146,7 +148,7 @@ public class UserServiceImpl implements UserService{
 		user.setOwnedOrRentedAccommodation(userDTO.getOwnedOrRentedAccommodation());
 		user.setMonthlyNetSalary(userDTO.getMonthlyNetSalary());
 		user.setRentAmount(userDTO.getRentAmount());
-		user.setIsBankLoan((userDTO.getIsBankLoan().equals(new Byte((byte) 0))) ? false : userDTO.getIsBankLoan().equals(new Byte((byte) 1)) ? true : null  );
+		user.setIsBankLoan((userDTO.getBankLoan().equals(new Byte((byte) 0))) ? false : userDTO.getBankLoan().equals(new Byte((byte) 1)) ? true : null  );
 		user.setCapitalContribution(userDTO.getCapitalContribution());
 		user.setCreditAmount(userDTO.getCreditAmount());
 		user.setMonthlyPayment(userDTO.getMonthlyPayment());

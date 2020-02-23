@@ -48,7 +48,7 @@ public class UserDTO {
 
     private Integer rentAmount;
 
-    private Byte isBankLoan;
+    private Byte bankLoan;
 
     private Integer capitalContribution;
 
@@ -59,6 +59,8 @@ public class UserDTO {
     private long creditTerminationDate;
 
     private String SIRETNumber;
+    
+    private String message;
     
 
     List<ProduitImmobilierDTO> realEstateProperty = new ArrayList<>();
@@ -187,15 +189,21 @@ public class UserDTO {
 	public void setRentAmount(Integer rentAmount) {
 		this.rentAmount = rentAmount;
 	}
-	public Byte getIsBankLoan() {
-		return isBankLoan;
+	
+	public Byte getBankLoan() {
+		return bankLoan;
 	}
-	public void setIsBankLoan(Boolean isBankLoan) {
-		this.isBankLoan = (isBankLoan == null) ? new Byte((byte)0) : new Byte(isBankLoan?(byte)1:(byte)0);
+	public void setBankLoan(Byte bankLoan) {
+		this.bankLoan = bankLoan;
+	}
+	public void setCreditTerminationDate(long creditTerminationDate) {
+		this.creditTerminationDate = creditTerminationDate;
 	}
 	public Integer getCapitalContribution() {
 		return capitalContribution;
 	}
+	
+	
 	public void setCapitalContribution(Integer capitalContribution) {
 		this.capitalContribution = capitalContribution;
 	}
@@ -228,6 +236,12 @@ public class UserDTO {
 	}
 	public void setRealEstateProperty(List<ProduitImmobilierDTO> realEstateProperty) {
 		this.realEstateProperty = realEstateProperty;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	

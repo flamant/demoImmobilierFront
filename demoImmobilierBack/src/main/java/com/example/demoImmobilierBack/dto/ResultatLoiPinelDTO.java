@@ -8,34 +8,74 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class ResultatLoiPinelDTO {
-    private Double loyerMaximum;
-    private Double reductionImpots6ans;
-    private Double reductionImpots9ans;
-    private Double reductionImpots12ans;
-	public Double getLoyerMaximum() {
+	
+    private double loyerMaximum;
+    
+    private double reductionImpots;
+    
+    private double montantEmprunt;
+    
+    private double economyImpots;
+    
+    private double mensualiteCredit;
+    
+    private double fraisAnnexe;
+    
+    private double effortEpargne;
+
+	public double getLoyerMaximum() {
 		return loyerMaximum;
 	}
-	public void setLoyerMaximum(Double loyerMaximum) {
+
+	public void setLoyerMaximum(double loyerMaximum) {
 		this.loyerMaximum = loyerMaximum;
 	}
-	public Double getReductionImpots6ans() {
-		return reductionImpots6ans;
+
+	public double getReductionImpots() {
+		return reductionImpots;
 	}
-	public void setReductionImpots6ans(Double reductionImpots6ans) {
-		this.reductionImpots6ans = reductionImpots6ans;
+
+	public void setReductionImpots(double reductionImpots) {
+		this.reductionImpots = reductionImpots;
 	}
-	public Double getReductionImpots9ans() {
-		return reductionImpots9ans;
+
+	public double getMontantEmprunt() {
+		return montantEmprunt;
 	}
-	public void setReductionImpots9ans(Double reductionImpots9ans) {
-		this.reductionImpots9ans = reductionImpots9ans;
+
+	public void setMontantEmprunt(double montantEmprunt) {
+		this.montantEmprunt = montantEmprunt;
 	}
-	public Double getReductionImpots12ans() {
-		return reductionImpots12ans;
+
+	public double getEconomyImpots() {
+		return economyImpots;
 	}
-	public void setReductionImpots12ans(Double reductionImpots12ans) {
-		this.reductionImpots12ans = reductionImpots12ans;
+
+	public void setEconomyImpots(double economyImpots) {
+		this.economyImpots = economyImpots;
 	}
-    
-    
+
+	public double getMensualiteCredit() {
+		return mensualiteCredit;
+	}
+
+	public void setMensualiteCredit(double mensualiteCredit) {
+		this.mensualiteCredit = mensualiteCredit;
+	}
+
+	public double getFraisAnnexe() {
+		return fraisAnnexe;
+	}
+
+	public void setFraisAnnexe(double fraisAnnexe) {
+		this.fraisAnnexe = fraisAnnexe;
+	}
+
+	public double getEffortEpargne() {
+		return effortEpargne;
+	}
+
+	public void setEffortEpargne(double effortEpargne) {
+		this.effortEpargne = effortEpargne;
+	}
 }
